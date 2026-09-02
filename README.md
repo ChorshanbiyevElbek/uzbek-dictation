@@ -158,7 +158,7 @@ Loyihani o'z nomingiz bilan qayta nashr qilish: [RELEASE.md](RELEASE.md)
 ```
 win/          Windows ilovasi (C++20 + Win32, Vulkan)
 src/          macOS ilovasi (Swift + C shim, Metal)
-web/          yuklab olish sahifasi
+docs/         yuklab olish sahifasi (GitHub Pages shu papkani chiqaradi)
 scripts/      macOS release skriptlari
 assets/       ikonkalar
 ```

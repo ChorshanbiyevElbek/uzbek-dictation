@@ -210,5 +210,5 @@ Step "TAYYOR"
 Write-Host "  https://github.com/$user/$RepoName/releases/latest" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Saytni ham chiqarish (ixtiyoriy):" -ForegroundColor Yellow
-Write-Host "    GitHub -> Settings -> Pages -> Source: main, papka: /web"
+Write-Host "    GitHub -> Settings -> Pages -> Source: main, papka: /docs"
 Write-Host "    Natija: https://$user.github.io/$RepoName/"
