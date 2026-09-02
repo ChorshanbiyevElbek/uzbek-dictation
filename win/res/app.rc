@@ -1,0 +1,43 @@
+#include <windows.h>
+
+// Ikonka. Birinchi (eng kichik ID) ikonka Explorer'da fayl ikonkasi
+// sifatida ishlatiladi.
+#define IDI_APPICON 101
+IDI_APPICON ICON "AppIcon.ico"
+
+// Zamonaviy boshqaruv elementlari (tugmalar, ro'yxatlar) uchun manifest.
+// Busiz oyna Windows 95 uslubida ko'rinadi.
+1 RT_MANIFEST "app.manifest"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEFLAGSMASK   0x3fL
+FILEFLAGS       0x0L
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        // 0409 = ingliz (AQSh), 04B0 = Unicode. Windows Explorer shu
+        // kombinatsiyani standart sifatida kutadi.
+        BLOCK "040904B0"
+        BEGIN
+            // set-identity.ps1 shu qatorni almashtiradi.
+            VALUE "CompanyName",      "GITHUB_USERNAME_PLACEHOLDER"
+            VALUE "FileDescription",  "O'zbekcha ovozli yozuv"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "AudioMatnga"
+            // MIT asl muallifning copyright qatorini saqlashni talab qiladi.
+            VALUE "LegalCopyright",   "Copyright (c) 2026 Muhammad Mirqobilov. MIT License."
+            VALUE "OriginalFilename", "AudioMatnga.exe"
+            VALUE "ProductName",      "Audio-Matnga"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

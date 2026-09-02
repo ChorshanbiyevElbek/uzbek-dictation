@@ -1,0 +1,33 @@
+# Build artifacts (macOS)
+src/*.o
+src/RubaiSTTDictation
+whisper.cpp/
+.venv/
+.assets/
+
+# Build artifacts (Windows)
+# AppIcon.ico ni build.ps1 assets/icon_1024.png dan yasaydi.
+# (.gitignore satr ichidagi izohni qo'llab-quvvatlamaydi — izoh alohida satrda.)
+win/res/AppIcon.ico
+win/build/
+win/out/
+*.obj
+*.pdb
+*.ilk
+
+# Model (1.5GB — release orqali yoki konversiya bilan olinadi)
+*.bin
+models/
+
+# Release artefaktlari (DMG, fon — release.sh yasaydi)
+dist/
+assets/dmg-bg.png
+
+# macOS
+.DS_Store
+
+# Mahalliy eslatma
+NEXT_SESSION.md
+
+# Cloudflare Wrangler keshi (hisob ID va loyiha nomi — repoda kerak emas)
+.wrangler/

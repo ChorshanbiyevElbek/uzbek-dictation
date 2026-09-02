@@ -1,0 +1,114 @@
+﻿THIRD-PARTY NOTICES — Audio-Matnga
+==================================
+
+Bu fayl Audio-Matnga bilan birga tarqatiladigan uchinchi tomon
+komponentlarining litsenziyalarini keltiradi.
+
+This file lists the licenses of third-party components redistributed
+with Audio-Matnga.
+
+
+-------------------------------------------------------------------------------
+1) Audio-Matnga (asl loyiha / original work)
+-------------------------------------------------------------------------------
+
+MIT License
+
+Copyright (c) 2026 Muhammad Mirqobilov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Note: This app uses the rubaiSTT model (islomov/rubaistt_v2_medium) and
+whisper.cpp, each under their own respective licenses.
+
+
+-------------------------------------------------------------------------------
+2) whisper.cpp / ggml  —  https://github.com/ggml-org/whisper.cpp
+    Versiya / version: v1.9.2
+    Tarqatiladigan fayllar: whisper.dll, ggml.dll, ggml-base.dll,
+    ggml-vulkan.dll, ggml-cpu-*.dll
+-------------------------------------------------------------------------------
+
+MIT License
+
+Copyright (c) 2023-2026 The ggml authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+-------------------------------------------------------------------------------
+3) rubaiSTT v2 medium  —  https://huggingface.co/islomov/rubaistt_v2_medium
+    Muallif / author: Sardor Islomov
+    Tarqatiladigan fayl: models/ggml-rubaistt.bin
+-------------------------------------------------------------------------------
+
+Litsenziya: Apache License 2.0
+To'liq matn: https://www.apache.org/licenses/LICENSE-2.0
+
+O'ZGARTIRISH TO'G'RISIDA BILDIRISHNOMA (Apache-2.0, 4-bo'lim b-bandi):
+
+    "ggml-rubaistt.bin" fayli islomov/rubaistt_v2_medium modelidan
+    OLINGAN va O'ZGARTIRILGAN nusxadir. Kiritilgan o'zgarishlar:
+      1. safetensors formatidan whisper.cpp ggml formatiga o'girilgan
+         (whisper.cpp models/convert-h5-to-ggml.py orqali, f16);
+      2. q8_0 (8-bitli) formatga kvantlangan (whisper-quantize).
+    Model arxitekturasi va vaznlari o'zgartirilmagan.
+
+    NOTICE OF MODIFICATION (Apache-2.0 section 4b):
+
+    The file "ggml-rubaistt.bin" is a MODIFIED derivative of
+    islomov/rubaistt_v2_medium. Modifications applied:
+      1. converted from safetensors to the whisper.cpp ggml format
+         (via whisper.cpp models/convert-h5-to-ggml.py, f16);
+      2. quantized to q8_0 (8-bit) using whisper-quantize.
+    The model architecture and weights are otherwise unchanged.
+
+    Asl model o'z navbatida OpenAI Whisper Medium asosida
+    fine-tune qilingan.
+    The upstream model is itself a fine-tune of OpenAI Whisper Medium.
+
+-------------------------------------------------------------------------------
+4) Microsoft Visual C++ Runtime
+    Tarqatiladigan fayllar: msvcp140*.dll, vcruntime140*.dll,
+    concrt140.dll, vccorlib140.dll, vcomp140.dll
+-------------------------------------------------------------------------------
+
+Bu fayllar Microsoft Visual Studio 2022 ning "Distributable Code"
+shartlari asosida ilova bilan birga (app-local) tarqatiladi.
+Faqat Release (debug bo'lmagan) versiyalari tarqatiladi.
+
+These files are redistributed app-local under the Microsoft Visual
+Studio 2022 "Distributable Code" terms. Only Release (non-debug)
+versions are redistributed.
