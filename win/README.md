@@ -20,21 +20,27 @@ Ikkita variant bor:
 1. Fayllardan birini yuklab oling va ishga tushiring
 2. Birinchi ochilishda Sozlamalar oynasi chiqadi — **mikrofoningizni tanlang**
 
-### ⚠️ Yuklab olish manzillari ishlamaydi
+### Model haqida
 
-`github.com/MuhammadMirrr/uzbek-dictation` repozitoriysi va uning `v1.0`
-release'i **o'chirilgan** — HTTP 404. Shu sababli ishlamaydi:
+Model (785 MB) — o'zbek nutqini taniydigan sun'iy intellekt fayli.
+U ikki yo'l bilan olinadi:
 
-- saytdagi `.exe` / `.dmg` / `.pkg` yuklab olish tugmalari;
-- o'rnatuvchining model yuklashi (`rubai.iss` → `ModelUrl`);
-- `setup.sh` dagi `MODEL_URL`;
-- `README.md` dagi `git clone`.
+- **Oflayn o'rnatuvchi** (`...-oflayn-setup.exe`, 749 MB) — model uning
+  ichida, hech narsa yuklab olinmaydi. **Tavsiya etiladi.**
+- **Oddiy o'rnatuvchi** (8 MB) — modelni o'rnatish paytida Release'dan
+  yuklaydi. Buning uchun `rubai.iss` dagi `ModelUrl` tirik release
+  faylini ko'rsatib turishi kerak.
 
-Model faylining boshqa ochiq nusxasi topilmadi (HuggingFace'da faqat asl
-`safetensors` bor, tayyor `ggml` yo'q). Hozircha yagona yo'l — **manbadan
-build qilish va modelni o'zi konversiya qilish** (pastga qarang).
+> Asl loyihaning (`MuhammadMirrr/uzbek-dictation`) repozitoriysi va uning
+> `v1.0` release'i o'chirilgan — HTTP 404. Shuning uchun eski
+> hujjatlardagi yuklab olish havolalari ishlamaydi. Model faylining
+> boshqa ochiq nusxasi ham topilmadi (HuggingFace'da faqat asl
+> `safetensors` bor, tayyor `ggml` yo'q) — shu sababli u
+> [`win/tools/convert_model.ps1`](tools/convert_model.ps1) bilan asl
+> vaznlardan qayta yasaldi. Natija asl fayl bilan bayt-ma-bayt bir xil
+> chiqdi (SHA256 `1b02df43…c8edc1a3`).
 
-### Model yuklab olinmasa
+### Model topilmasa
 
 O'rnatuvchi modelni to'rtta manbadan qidiradi (shu tartibda):
 
@@ -42,7 +48,7 @@ O'rnatuvchi modelni to'rtta manbadan qidiradi (shu tartibda):
 2. **`ggml-rubaistt.bin` ni `setup.exe` yoniga qo'ying** — o'rnatuvchi uni
    o'zi topadi va internetsiz o'rnatadi
 3. **Oflayn o'rnatuvchi** — model uning ichida (`build.ps1 -BundleModel`)
-4. **Internetdan yuklash** — `ModelUrl` (hozir 404)
+4. **Internetdan yuklash** — `ModelUrl` dan
 
 Hech biri chiqmasa, o'rnatuvchi endi **modelsiz o'rnatishni taklif qiladi**
 va faylni keyin qayerga qo'yish kerakligini aytadi. Ilova modelni uchta
@@ -153,12 +159,12 @@ Foydali bayroqlar:
 | `-NoInstaller` | faqat `.exe` yasaydi, o'rnatuvchisiz |
 | `-WithTools` | `whisper-cli.exe` va `whisper-quantize.exe` ni ham yig'adi (model konversiyasi uchun kerak) |
 | `-BundleModel <yo'l>` | oflayn o'rnatuvchi: model `.exe` ichiga joylanadi |
-| `-WorkDir <yo'l>` | build artefaktlari papkasi. Standart: `D:\rubai` (agar D: disk bo'lsa), aks holda `%LOCALAPPDATA%\rubai-build` |
+| `-WorkDir <yo'l>` | build artefaktlari papkasi. Standart: `%LOCALAPPDATA%\rubai-build` |
 
 ### Modelni o'zi yasash
 
-Tayyor `ggml-rubaistt.bin` endi hech qayerdan yuklab olinmaydi, shuning uchun
-uni HuggingFace'dagi asl vaznlardan qayta yasash kerak:
+Modelni HuggingFace'dagi asl vaznlardan qayta yasash mumkin — natija
+asl fayl bilan bayt-ma-bayt bir xil chiqadi:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File win\build.ps1 -WithTools -NoInstaller

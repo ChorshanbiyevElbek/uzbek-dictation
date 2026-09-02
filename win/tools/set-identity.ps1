@@ -74,9 +74,12 @@ Write-Host ""
 Write-Host "Jami: $total ta o'zgartirish" -ForegroundColor Green
 
 # Qolgan izlarni ko'rsatamiz — jimgina o'tkazib yubormaslik uchun.
-$leftover = Select-String -Path (Join-Path $Root '*') -Include *.cpp,*.h,*.iss,*.rc,*.md,*.sh,*.html,*.ps1 `
-    -Recurse -Pattern 'MuhammadMirrr|Mirkabilov|GITHUB_USERNAME_PLACEHOLDER' -EA SilentlyContinue |
-    Where-Object { $_.Path -notlike '*set-identity.ps1' }
+# Diqqat: Select-String da -Recurse YO'Q — fayllarni Get-ChildItem topadi.
+$files = Get-ChildItem $Root -Recurse -File -Include *.cpp,*.h,*.iss,*.rc,*.md,*.sh,*.html,*.ps1 -EA SilentlyContinue |
+         Where-Object { $_.FullName -notlike '*\.git\*' -and $_.Name -ne 'set-identity.ps1' }
+$leftover = if ($files) {
+    Select-String -Path $files.FullName -Pattern 'MuhammadMirrr|Mirkabilov|GITHUB_USERNAME_PLACEHOLDER' -EA SilentlyContinue
+}
 
 if ($leftover) {
     Write-Host ""

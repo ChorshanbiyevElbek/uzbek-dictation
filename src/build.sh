@@ -70,7 +70,7 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 <dict>
     <key>CFBundleName</key><string>RubaiSTT Dictation</string>
     <key>CFBundleDisplayName</key><string>RubaiSTT Dictation</string>
-    <key>CFBundleIdentifier</key><string>com.rubaistt.dictation</string>
+    <key>CFBundleIdentifier</key><string>com.github.ChorshanbiyevElbek.audiomatnga</string>
     <key>CFBundleVersion</key><string>1.0</string>
     <key>CFBundleShortVersionString</key><string>1.0</string>
     <key>CFBundlePackageType</key><string>APPL</string>

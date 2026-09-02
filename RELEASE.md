@@ -23,20 +23,24 @@ birinchi nashrdan **oldin** bajarilishi shart.
   `RemoveOldVersion()` olib tashlandi.
 - ✅ Administrator huquqisiz o'rnatish varianti qo'shildi
   (`PrivilegesRequiredOverridesAllowed=dialog`).
+- ✅ O'rnatuvchi **to'liq o'zbekchaga** o'tkazildi
+  (`win/installer/Uzbek.isl`, 296 ta xabar). Ilgari sehrgar inglizcha edi.
+- ✅ Nashr etuvchi nomi `ChorshanbiyevElbek` ga o'rnatildi
+  (`set-identity.ps1` bajarildi).
 
 ---
 
-## 1. Ismingizni qo'ying (majburiy)
+## 1. Ismingiz qo'yilgan ✅
 
-Hozir `AppPublisher`, `CompanyName` va havolalarda
-`GITHUB_USERNAME_PLACEHOLDER` turibdi. Bitta buyruq bilan almashadi:
+`AppPublisher`, `CompanyName` va barcha havolalar
+`ChorshanbiyevElbek` ga o'rnatildi. Nomni o'zgartirish kerak bo'lsa:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File win\tools\set-identity.ps1 -GitHubUser SIZNING_USERNAME
+powershell -ExecutionPolicy Bypass -File win\tools\set-identity.ps1 -GitHubUser YANGI_USERNAME
 ```
 
-Skript oxirida qolgan izlarni o'zi ko'rsatadi. `LICENSE` va
-`LegalCopyright` ataylab tegilmaydi.
+`LICENSE` va `LegalCopyright` ataylab tegilmaydi — asl muallifning
+copyright qatorini saqlash MIT talabi.
 
 ## 2. Qayta yig'ing
 
@@ -50,13 +54,13 @@ powershell -ExecutionPolicy Bypass -File win\build.ps1 -SkipWhisper -BundleModel
 ## 3. GitHub'ga chiqarish
 
 ```powershell
-git remote add origin https://github.com/SIZNING_USERNAME/uzbek-dictation.git
-git branch -M main
-git push -u origin main
+gh auth login                                                  # bir marta
+powershell -ExecutionPolicy Bypass -File win\tools\publish-github.ps1
 ```
 
-Keyin **Releases → Draft a new release**, tag `v1.0`, va quyidagilarni
-asset sifatida yuklang:
+Skript repozitoriy yaratadi, kodni yuklaydi va Release'ga uchta asset
+qo'yadi. Nashrdan oldin placeholder va begona shaxsiy ma'lumot qolgan-
+qolmaganini o'zi tekshiradi. Quruq yurgizish: `-WhatIf`.
 
 | Fayl | Hajm | Izoh |
 |---|---|---|
@@ -67,6 +71,9 @@ asset sifatida yuklang:
 > GitHub Releases bitta asset uchun **2 GB** gacha ruxsat beradi, shuning
 > uchun 749 MB muammo emas. Repozitoriyning **o'ziga** bu fayllarni
 > qo'ymang — `dist/` va `*.bin` `.gitignore` da.
+
+Saytni ham chiqarish: **Settings → Pages → Source: `main`, papka `/web`**
+→ `https://chorshanbiyevelbek.github.io/uzbek-dictation/`
 
 ## 4. Onlayn o'rnatuvchini yoqish (ixtiyoriy)
 
@@ -84,7 +91,6 @@ holda foydalanuvchi 404 oladi.
 | Masala | Ta'siri |
 |---|---|
 | **Kod imzosi yo'q** | Har bir yuklab oluvchi SmartScreen ogohlantirishini ko'radi ("More info → Run anyway"). Yechim — OV/EV sertifikat (yillik to'lov). |
-| **O'rnatuvchi oynasi inglizcha** | `Name: "uz"` `compiler:Default.isl` (inglizcha) ga bog'langan. Faqat 5 ta maxsus xabar o'zbekcha. Tuzatish uchun `Uzbek.isl` tarjimasi kerak. |
 | **Windows 10 da sinalmagan** | Ilova Windows 11 da sinaldi. Haqiqiy chegara `SetProcessDpiAwarenessContext` importi bo'yicha Windows 10 1703, lekin o'rnatuvchi 1809 talab qiladi va hech qanday Windows 10 mashinada tekshirilmagan. |
 | **Avtostart so'ramasdan yoqiladi** | Ilova birinchi ishga tushganda `HKCU\...\Run` ga o'zini yozadi (`config.h`: `autoStart` standart `true`). Imzolanmagan ilova uchun bu antivirus e'tiborini tortadi. |
 | **macOS tomoni sinalmagan** | Mac yo'q edi. `setup.sh` whisper.cpp ni tegsiz klonlaydi (Windows `v1.9.2` ga qadalgan) — vaqt o'tishi bilan ikki platforma natijasi ajralib ketishi mumkin. |

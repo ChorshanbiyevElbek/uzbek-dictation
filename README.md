@@ -14,7 +14,7 @@ serverga yuborilmaydi. Bepul, reklamasiz, obunasiz.
 
 ### Windows 10 / 11 (64-bit)
 
-**[⬇️ Audio-Matnga-1.0.0-oflayn-setup.exe (749 MB)](https://github.com/GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation/releases/latest)**
+**[⬇️ Audio-Matnga-1.0.0-oflayn-setup.exe (749 MB)](https://github.com/ChorshanbiyevElbek/uzbek-dictation/releases/latest)**
 
 Bitta fayl — ichida hammasi bor. Yuklab oling, ikki marta bosing, tayyor.
 
@@ -24,7 +24,7 @@ Bitta fayl — ichida hammasi bor. Yuklab oling, ikki marta bosing, tayyor.
 <details>
 <summary>Kichikroq variant (8 MB) — internet barqaror bo'lsa</summary>
 
-**[Audio-Matnga-1.0.0-setup.exe (8 MB)](https://github.com/GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation/releases/latest)**
+**[Audio-Matnga-1.0.0-setup.exe (8 MB)](https://github.com/ChorshanbiyevElbek/uzbek-dictation/releases/latest)**
 
 Modelni o'rnatish paytida yuklab oladi. Internet uzilib qolsa xato beradi —
 shuning uchun katta variant ishonchliroq.

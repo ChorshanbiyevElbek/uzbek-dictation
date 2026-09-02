@@ -12,9 +12,9 @@
 #define AppName        "Audio-Matnga"
 #define AppVersion     "1.0.0"
 ; set-identity.ps1 quyidagi ikki qatorni almashtiradi.
-#define AppPublisher   "GITHUB_USERNAME_PLACEHOLDER"
+#define AppPublisher   "ChorshanbiyevElbek"
 #define AppExe         "AudioMatnga.exe"
-#define AppUrl         "https://github.com/GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation"
+#define AppUrl         "https://github.com/ChorshanbiyevElbek/uzbek-dictation"
 
 ; Model manzili, hajmi va SHA256 — ISCC ga /D bilan berish mumkin:
 ;   iscc /DModelUrl=https://.../ggml-rubaistt.bin /DModelSize=... /DModelSha256=... rubai.iss
@@ -25,7 +25,7 @@
 ; (-BundleModel) chiqarish tavsiya etiladi.
 ; Modelni noldan yasash: win/tools/convert_model.ps1
 #ifndef ModelUrl
-  #define ModelUrl     "https://github.com/GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation/releases/download/v1.0/ggml-rubaistt.bin"
+  #define ModelUrl     "https://github.com/ChorshanbiyevElbek/uzbek-dictation/releases/download/v1.0/ggml-rubaistt.bin"
 #endif
 #ifndef ModelSha256
   #define ModelSha256  "1b02df434902015e1464611a7748927e42fcb55c49791c85239cf713c8edc1a3"

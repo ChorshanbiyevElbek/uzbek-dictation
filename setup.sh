@@ -8,7 +8,7 @@ MODELDIR="$HOME/rubai-stt/models"
 MODEL="$MODELDIR/ggml-rubaistt.bin"       # q8_0 (yengil ~820MB) — ilova shu nomdan o'qiydi
 MODEL_F16="$MODELDIR/ggml-rubaistt-f16.bin"
 # Tayyor q8_0 ggml model (GitHub Release). Bo'sh bo'lsa — HF'dan konversiya + quant qilinadi.
-MODEL_URL="${MODEL_URL:-https://github.com/MuhammadMirrr/uzbek-dictation/releases/download/v1.0/ggml-rubaistt.bin}"
+MODEL_URL="${MODEL_URL:-https://github.com/ChorshanbiyevElbek/uzbek-dictation/releases/download/v1.0/ggml-rubaistt.bin}"
 
 echo "==> RubaiSTT Dictation o'rnatilmoqda"
 
@@ -71,12 +71,12 @@ echo "==> Ilova build qilinmoqda..."
 bash "$ROOT/src/build.sh"
 
 # 5) Avto-ishga tushish (login'da, open orqali — TCC to'g'ri bog'lanishi uchun)
-PLIST="$HOME/Library/LaunchAgents/com.rubaistt.dictation.plist"
+PLIST="$HOME/Library/LaunchAgents/com.github.ChorshanbiyevElbek.audiomatnga.plist"
 cat > "$PLIST" <<PL
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>com.rubaistt.dictation</string>
+  <key>Label</key><string>com.github.ChorshanbiyevElbek.audiomatnga</string>
   <key>ProgramArguments</key>
   <array><string>/usr/bin/open</string><string>$HOME/Applications/RubaiSTT Dictation.app</string></array>
   <key>RunAtLoad</key><true/>
