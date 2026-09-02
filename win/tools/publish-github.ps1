@@ -119,11 +119,18 @@ if (-not $ReleaseOnly) {
     }
 
     Step "Kodni yuklash"
-    $remote = git remote get-url origin 2>$null
-    if (-not $remote) {
-        git remote add origin "https://github.com/$user/$RepoName.git"
+    # `git remote get-url origin` remote yo'q bo'lsa stderr'ga yozadi va
+    # $ErrorActionPreference='Stop' bilan skriptni yiqitadi — shuning
+    # uchun mavjudligini Try-Exec orqali tekshiramiz.
+    $url = "https://github.com/$user/$RepoName.git"
+    if (Try-Exec { git remote get-url origin }) {
+        git remote set-url origin $url
+    } else {
+        git remote add origin $url
     }
     git branch -M main
+    # gh token'ini git ham ishlatsin (credential helper sozlanmagan bo'lishi mumkin).
+    gh auth setup-git 2>&1 | Out-Null
     git push -u origin main
     if ($LASTEXITCODE -ne 0) { Fail "push bajarilmadi" }
     Info "kod yuklandi"
