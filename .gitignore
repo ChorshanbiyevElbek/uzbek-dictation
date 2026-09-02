@@ -29,5 +29,18 @@ assets/dmg-bg.png
 # Mahalliy eslatma
 NEXT_SESSION.md
 
+# Maxfiy ma'lumotlar — HECH QACHON commitga tushmasin.
+# (GitHub token, parol, sertifikat va h.k.)
+.env
+*.env
+.env.*
+!.env.example
+*.pem
+*.pfx
+*.key
+*_token
+*.token
+secrets/
+
 # Cloudflare Wrangler keshi (hisob ID va loyiha nomi — repoda kerak emas)
 .wrangler/

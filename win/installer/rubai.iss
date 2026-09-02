@@ -84,7 +84,12 @@ PrivilegesRequired=admin
 PrivilegesRequiredOverridesAllowed=dialog
 
 [Languages]
-Name: "uz"; MessagesFile: "compiler:Default.isl"
+; Uzbek.isl — shu loyiha bilan birga keladi. Inno Setup rasmiy
+; tarjimalari orasida o'zbek tili yo'q, shuning uchun ilgari bu yerda
+; "compiler:Default.isl" (INGLIZCHA) turardi: [CustomMessages] o'zbekcha
+; bo'lsa-da, sehrgarning barcha standart tugma va matnlari inglizcha
+; ko'rinardi — oddiy foydalanuvchi uchun asosiy to'siq shu edi.
+Name: "uz"; MessagesFile: "Uzbek.isl"
 
 [CustomMessages]
 uz.CreateDesktopIcon=Ish stolida yorliq yaratilsin

@@ -1,144 +1,196 @@
-# 🎙️ Audio-Matnga — O'zbekcha ovozli yozuv
+# 🎙️ Audio-Matnga
 
-Istalgan ilovada (Telegram, brauzer, hujjat — qayerda kursor bo'lsa) tugmani bosib o'zbekcha gapiring — matn avtomatik o'sha joyga lotin alifbosida yoziladi.
+**Istalgan joyda o'zbekcha gapiring — matn o'zi yoziladi.**
 
-**Ikkala platforma uchun ham tayyor:**
+Telegram, brauzer, Word, Excel — kursor qayerda bo'lsa, o'sha yerga.
+Tugmani bosasiz, gapirasiz, yana bosasiz. Tamom.
 
-| Platforma | Tugma | Yuklab olish | Texnik hujjat |
-|---|---|---|---|
-| **macOS** 13+ | ⌃⌥D | [.dmg (785 MB)](https://github.com/MuhammadMirrr/uzbek-dictation/releases) | shu hujjat |
-| **Windows** 10/11 | Ctrl+Alt+D | [.exe (8 MB)](https://github.com/MuhammadMirrr/uzbek-dictation/releases) | [win/README.md](win/README.md) |
-
-Ikkala versiya bir xil modeldan (`rubaiSTT v2 medium`) va bir xil inference parametrlaridan
-foydalanadi — natijalar bir xil bo'ladi. Tizimning o'rnatilgan diktovkasi kabi, lekin
-**o'zbek tili uchun maxsus**, **butunlay oflayn** (internetsiz), va **bepul**.
-
-> **Nom haqida:** mahsulot nomi — **Audio-Matnga**. Windows ilovasi shu nom bilan
-> o'rnatiladi. macOS ilovasining bundle nomi hozircha `RubaiSTT Dictation.app`
-> bo'lib qolgan: uni o'zgartirsak, mavjud Mac foydalanuvchilari Accessibility
-> ruxsatini qaytadan berishga majbur bo'ladi va avtostart uziladi.
-
-> System-wide Uzbek speech-to-text dictation for **macOS and Windows**. Press the hotkey
-> anywhere, speak Uzbek, and the transcribed text is typed into the focused field.
-> Powered by the [rubaiSTT](https://huggingface.co/islomov/rubaistt_v2_medium) model running
-> locally via [whisper.cpp](https://github.com/ggml-org/whisper.cpp) — Metal on macOS,
-> Vulkan on Windows. Fully offline.
+**Internet kerak emas.** Ovozingiz kompyuteringizdan chiqmaydi — hech qanday
+serverga yuborilmaydi. Bepul, reklamasiz, obunasiz.
 
 ---
 
-## 🗂 Repozitoriy tuzilishi
+## ⬇️ Yuklab olish
+
+### Windows 10 / 11 (64-bit)
+
+**[⬇️ Audio-Matnga-1.0.0-oflayn-setup.exe (749 MB)](https://github.com/GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation/releases/latest)**
+
+Bitta fayl — ichida hammasi bor. Yuklab oling, ikki marta bosing, tayyor.
+
+> **Nega 749 MB?** Ichida o'zbek tilini taniydigan sun'iy intellekt modeli
+> bor (785 MB). Aynan shuning uchun ilova internetsiz ishlaydi.
+
+<details>
+<summary>Kichikroq variant (8 MB) — internet barqaror bo'lsa</summary>
+
+**[Audio-Matnga-1.0.0-setup.exe (8 MB)](https://github.com/GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation/releases/latest)**
+
+Modelni o'rnatish paytida yuklab oladi. Internet uzilib qolsa xato beradi —
+shuning uchun katta variant ishonchliroq.
+</details>
+
+### macOS 13+
+
+macOS versiyasi manbadan yig'iladi — tayyor `.dmg` hozircha yo'q.
+Ko'rsatma: [`setup.sh`](setup.sh) va shu hujjatning oxiri.
+
+---
+
+## 🚀 Uch qadamda
+
+**1.** `.exe` faylni ishga tushiring
+
+> Windows «Windows protected your PC» deb ogohlantiradi — bu normal,
+> ilova hali raqamli imzoga ega emas.
+> **«Batafsil» (More info) → «Baribir ishga tushirish» (Run anyway)** bosing.
+
+**2.** O'rnatishdan keyin Sozlamalar oynasi chiqadi — **mikrofoningizni tanlang**
+
+> Muhim: Windows'da standart mikrofon ba'zan «Stereo Mix» bo'lib qoladi —
+> u ovozingizni emas, kompyuter ovozini yozadi. Ilova bunday qurilmalarni
+> sariq rangda ogohlantiradi.
+
+**3.** Istalgan joyga yozishni boshlang
+
+| Amal | Tugma |
+|---|---|
+| Yozishni boshlash / to'xtatish | **Ctrl + Alt + D** |
+| Sozlamalar | Tray ikonkasiga **chap tugma** |
+| Menyu | Tray ikonkasiga **o'ng tugma** |
+
+Tugmani Sozlamalardan o'zgartirish mumkin.
+
+---
+
+## 💻 Qanday kompyuter kerak
+
+|  | Minimum | Tavsiya |
+|---|---|---|
+| **Windows** | 10, 64-bit | 10 (22H2) yoki 11 |
+| **Protsessor** | istalgan 64-bitli Intel/AMD | AVX2 bilan (2013-yildan keyingi) |
+| **Operativ xotira** | 6 GB | **8 GB** |
+| **Videokarta** | **shart emas** | Vulkan 1.2 + ~1.5 GB videoxotira |
+| **Disk** | ~890 MB | o'rnatishda 1.8 GB bo'sh |
+
+**Videokartasiz ham ishlaydi** — aniqlik aynan bir xil, faqat sekinroq.
+
+| Rejim | 10 soniyalik diktovka |
+|---|---|
+| Videokarta (RTX 4060) | **~1 soniya** |
+| Protsessor (8 oqim) | ~7 soniya |
+
+Batafsil: [win/README.md](win/README.md)
+
+---
+
+## 🎯 Aniqlik
+
+Google FLEURS o'zbek to'plamida o'lchangan (murakkab yangiliklar matnlari):
+**WER 17%** — so'zlarning ~83% to'g'ri. Kundalik oddiy gaplarda yuqoriroq.
+
+Aniqlik videokarta va protsessor rejimida **bir xil**.
+
+---
+
+## 🔒 Maxfiylik
+
+Ilovaning ichida birorta tarmoq kutubxonasi yo'q — bu tekshirilgan
+(`dumpbin /DEPENDENTS`). Ya'ni ilova texnik jihatdan internetga murojaat
+**qila olmaydi**.
+
+- Ovoz faqat operativ xotirada — diskka ham yozilmaydi
+- Transkripsiya kompyuteringizda bajariladi
+- Telemetriya, analitika, yangilanish tekshiruvi — yo'q
+- Logda faqat matn *uzunligi* saqlanadi, matnning o'zi emas
+
+---
+
+## ❓ Muammo bo'lsa
+
+| Muammo | Yechim |
+|---|---|
+| **Ctrl+Alt+D ishlamayapti** | Boshqa dastur shu tugmani egallagan. Sozlamalardan boshqa tugma tanlang. |
+| **Matn yozilmayapti** | Administrator huquqida ishlayotgan oynaga (masalan Task Manager) yozib bo'lmaydi — bu Windows cheklovi. |
+| **«Mikrofon jim» deydi** | Sozlamalardan boshqa mikrofon tanlang. Windows sozlamalarida mikrofonga ruxsat berilganini tekshiring. |
+| **Juda sekin** | Videokartangiz Vulkan'ni qo'llab-quvvatlamasa protsessorda ishlaydi. Log: `%LOCALAPPDATA%\Audio-Matnga\dictation.log` |
+| **SmartScreen bloklayapti** | «Batafsil» → «Baribir ishga tushirish». Ilova imzolanmagan. |
+
+Fayllar qayerda:
 
 ```
-src/          macOS ilovasi (Swift + C shim)
-win/          Windows ilovasi (C++20 + Win32)   -> win/README.md
-scripts/      macOS release skriptlari
+Sozlamalar  %APPDATA%\Audio-Matnga\settings.ini
+Log         %LOCALAPPDATA%\Audio-Matnga\dictation.log
+Model       <o'rnatilgan papka>\models\ggml-rubaistt.bin
+```
+
+---
+
+## 🛠 Manbadan yig'ish
+
+Windows uchun to'liq ko'rsatma: **[win/README.md](win/README.md)**
+
+Qisqacha:
+
+```powershell
+winget install Git.Git Kitware.CMake KhronosGroup.VulkanSDK JRSoftware.InnoSetup
+winget install Microsoft.VisualStudio.2022.BuildTools --override `
+    "--quiet --wait --add Microsoft.VisualStudio.Workload.VCTools"
+
+powershell -ExecutionPolicy Bypass -File win\build.ps1
+```
+
+Modelni o'zi yasash (GitHub release'siz):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File win\build.ps1 -WithTools -NoInstaller
+powershell -ExecutionPolicy Bypass -File win\tools\convert_model.ps1
+```
+
+macOS uchun: `./setup.sh`
+
+Loyihani o'z nomingiz bilan qayta nashr qilish: [RELEASE.md](RELEASE.md)
+
+---
+
+## 📁 Tuzilishi
+
+```
+win/          Windows ilovasi (C++20 + Win32, Vulkan)
+src/          macOS ilovasi (Swift + C shim, Metal)
 web/          yuklab olish sahifasi
+scripts/      macOS release skriptlari
 assets/       ikonkalar
 ```
 
-Windows portining texnik tafsilotlari, o'lchangan ko'rsatkichlar va sinovda topilgan
-xatolar: [WINDOWS-PORT-PLAN.md](WINDOWS-PORT-PLAN.md)
+Texnik tafsilotlar: [WINDOWS-PORT-PLAN.md](WINDOWS-PORT-PLAN.md) ·
+[AGENTS.md](AGENTS.md)
 
 ---
 
-## ✨ Xususiyatlar / Features
+## 📄 Litsenziya va minnatdorchilik
 
-- 🌐 **Tizim bo'ylab** — istalgan ilovada ishlaydi (global hotkey **⌃⌥D**)
-- 🇺🇿 **O'zbek tiliga maxsus** — `rubaiSTT v2 medium` modeli, lotin alifbosi
-- ⚡ **Metal tezlashtirish** — Apple Silicon GPU'da tez · Intel'da CPU bilan ishlaydi (universal)
-- 🔌 **To'liq oflayn** — hech qanday server/internet kerak emas, ovoz qurilmangizdan chiqmaydi
-- 🪶 **Yengil** — menyu-bar ilovasi; model 3 daqiqa ishlatilmasa RAM'dan bo'shaydi
-- ⌨️ **Sozlanadigan tugma** — diktovka tugmasini Sozlamalar oynasidan o'zgartirish mumkin (standart ⌃⌥D)
+Kod — **MIT**. Asl muallif: **Muhammad Mirqobilov**
+([LICENSE](LICENSE)).
 
-## 📋 Talablar / Requirements
+Uchinchi tomon komponentlari va ularning litsenziyalari:
+[THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)
 
-- macOS 13+ · **Universal** — Apple Silicon (M1–M5, Metal bilan tez) yoki Intel (CPU, sekinroq)
-- [Homebrew](https://brew.sh)
-- Xcode Command Line Tools (`xcode-select --install`)
-- ~1 GB disk (model ~820 MB, q8_0)
+- **[rubaiSTT v2 medium](https://huggingface.co/islomov/rubaistt_v2_medium)**
+  — Sardor Islomov (o'zbek STT modeli, Apache-2.0).
+  Ilovadagi `ggml-rubaistt.bin` — shu modelning ggml formatiga o'girilgan
+  va q8_0 ga kvantlangan nusxasi.
+- **[whisper.cpp](https://github.com/ggml-org/whisper.cpp)** — Georgi Gerganov (MIT)
+- **[OpenAI Whisper](https://github.com/openai/whisper)** — asl model arxitekturasi
 
-## 🚀 O'rnatish / Install
+> **Nom haqida:** mahsulot nomi — **Audio-Matnga**. macOS ilovasining bundle
+> nomi hozircha `RubaiSTT Dictation.app` bo'lib qolgan: uni o'zgartirsak,
+> mavjud Mac foydalanuvchilari Accessibility ruxsatini qaytadan berishga
+> majbur bo'ladi.
 
-### A) Tayyor ilova (oson) — DMG
+---
 
-1. **[⬇️ RubaiSTT-Dictation.dmg yuklab olish](https://github.com/MuhammadMirrr/uzbek-dictation/releases/download/v1.0/RubaiSTT-Dictation.dmg)** (~785 MB, model ichida)
-2. DMG'ni oching va ilovani **Applications** papkasiga torting
-3. Ilovani ishga tushiring — **Xush kelibsiz** oynasi ikkita ruxsatni (mikrofon + Accessibility) berishda yo'l-yo'riq ko'rsatadi
-
-Model ilova ichida — **to'liq oflayn**, terminal kerak emas.
-
-#### Birinchi ochish (muhim)
-
-Ilova **Developer ID bilan imzolangan**, lekin hozircha notarize qilinmagan. Shuning uchun **birinchi marta** macOS ogohlantirishi mumkin (*"Apple cannot check it for malicious software"*). Bir martalik yechim:
-
-- **macOS 13–14:** ilovaga **o'ng tugma (Control-click) → Open → Open**
-- **macOS 15 (Sequoia):** ilovani oching → bloklanadi → **System Settings → Privacy & Security** → pastga tushing → **«Open Anyway» / «Все равно открыть»** → tasdiqlang
-
-Bir marta shunday qilsangiz, keyin doim normal ochiladi.
-
-### B) Manbadan build (developer)
-
-```bash
-git clone https://github.com/MuhammadMirrr/uzbek-dictation.git
-cd uzbek-dictation
-./setup.sh
-```
-
-`setup.sh` avtomatik: kerakli vositalarni o'rnatadi → whisper.cpp'ni Metal bilan build qiladi → modelni yuklaydi → ilovani build qilib o'rnatadi → login'da avto-ishga tushishni sozlaydi.
-
-### Oxirgi qadam — Accessibility ruxsati
-
-Matn avtomatik joylashishi uchun (⌘V yuborish) bir marta ruxsat bering:
-
-1. **System Settings → Privacy & Security → Accessibility**
-2. **"RubaiSTT Dictation"** ni qo'shing (`+`) va **yoqing** ✅
-
-Birinchi yozishda **mikrofon** ruxsati ham so'raladi — ruxsat bering.
-
-## 🎯 Ishlatish / Usage
-
-1. Istalgan joyda kursorni yozish maydoniga qo'ying
-2. **⌃⌥D** bosing → 🔴 gapiring → **⌃⌥D** yana bosing
-3. Matn o'sha joyga yoziladi
-
-Menyu-bardagi 🎙️ ikonadan ham boshqarish mumkin.
-
-## 📦 Tarqatish / Release (developer)
-
-Imzolangan + notarize qilingan DMG yasash:
-
-```bash
-# Bir martalik: notarize uchun keychain profil
-xcrun notarytool store-credentials rubai-notary \
-    --apple-id "siz@example.com" --team-id "TEAMID" \
-    --password "xxxx-xxxx-xxxx-xxxx"   # app-specific parol
-
-brew install create-dmg     # chiroyli DMG foni uchun (ixtiyoriy)
-./scripts/release.sh        # build → Developer ID imzo → notarize → DMG
-```
-
-Natija: `dist/RubaiSTT-Dictation.dmg`. Skript "Developer ID Application" sertifikatini avtomatik topadi; model `.app` ichiga joylanadi.
-
-## ⚠️ Eslatma / Notes
-
-- Tayyor DMG **Developer ID bilan imzolangan** (hardened runtime). Notarize keyinroq qo'shiladi — shu sababli birinchi ochishda yuqoridagi bir martalik qadam kerak. Manbadan build (`setup.sh`) esa **ad-hoc imzolangan** (lokal, Gatekeeper bloklamaydi).
-- App Store'ga **chiqmaydi** — tizim bo'ylab matn yozish (synthetic ⌘V) sandbox'da taqiqlangan; shuning uchun Developer ID orqali tarqatiladi.
-- **Universal binary** — Apple Silicon (Metal GPU) va Intel (CPU). Intel'da sezilarli sekinroq, lekin ishlaydi.
-
-## 🛠 Texnik tafsilotlar
-
-- **Model:** [`islomov/rubaistt_v2_medium`](https://huggingface.co/islomov/rubaistt_v2_medium) → ggml **q8_0** (8-bit) ga siqilgan — ~820 MB, ~700 MB kamroq RAM, aniqlik deyarli o'zgarmaydi
-- **Inference:** whisper.cpp + Metal, beam search (maksimal aniqlik)
-- **Til:** `uz`, lotin alifbosi
-- **UI:** Swift / AppKit, menyu-bar (LSUIElement), global hotkey Carbon orqali
-- **Matn kiritish:** clipboard + ⌘V (CGEvent) — Accessibility ruxsati kerak
-
-## 📄 Litsenziya
-
-MIT (`LICENSE`). Model va whisper.cpp o'z litsenziyalari ostida.
-
-## 🙏 Minnatdorchilik
-
-- [rubaiSTT](https://huggingface.co/islomov/rubaistt_v2_medium) — Sardor Islomov (o'zbek STT modeli)
-- [whisper.cpp](https://github.com/ggml-org/whisper.cpp) — Georgi Gerganov
-- [OpenAI Whisper](https://github.com/openai/whisper)
+<sub>System-wide Uzbek speech-to-text dictation for Windows and macOS.
+Press the hotkey anywhere, speak Uzbek, and the transcribed text is typed
+into the focused field. Powered by the rubaiSTT model running locally via
+whisper.cpp — Vulkan on Windows, Metal on macOS. Fully offline.</sub>

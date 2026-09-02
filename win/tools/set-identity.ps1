@@ -39,9 +39,12 @@ $edits = @(
     @{ File = 'win\installer\rubai.iss';  From = '"GITHUB_USERNAME_PLACEHOLDER"';               To = "`"$DisplayName`"" },
     @{ File = 'win\res\app.rc';           From = 'GITHUB_USERNAME_PLACEHOLDER';                 To = $DisplayName },
     @{ File = 'setup.sh';                 From = 'MuhammadMirrr/uzbek-dictation';               To = "$GitHubUser/$RepoName" },
+    @{ File = 'README.md';                From = 'GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation'; To = "$GitHubUser/$RepoName" },
     @{ File = 'README.md';                From = 'MuhammadMirrr/uzbek-dictation';               To = "$GitHubUser/$RepoName" },
     @{ File = 'win\README.md';            From = 'MuhammadMirrr/uzbek-dictation';               To = "$GitHubUser/$RepoName" },
+    @{ File = 'web\index.html';           From = 'GITHUB_USERNAME_PLACEHOLDER/uzbek-dictation'; To = "$GitHubUser/$RepoName" },
     @{ File = 'web\index.html';           From = 'MuhammadMirrr/uzbek-dictation';               To = "$GitHubUser/$RepoName" },
+    @{ File = 'RELEASE.md';               From = 'SIZNING_USERNAME';                            To = $GitHubUser },
     # macOS: bundle ID va LaunchAgent yorlig'i egasi nazorat qiladigan
     # reverse-DNS bo'lishi kerak, aks holda ikki ilova to'qnashadi.
     @{ File = 'src\build.sh';             From = 'com.rubaistt.dictation';                      To = "com.github.$GitHubUser.audiomatnga" },
