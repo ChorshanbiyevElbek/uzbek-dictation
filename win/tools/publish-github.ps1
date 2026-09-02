@@ -58,11 +58,17 @@ $user = (gh api user --jq .login 2>$null)
 if (-not $user) { Fail "GitHub foydalanuvchisi aniqlanmadi" }
 Info "GitHub foydalanuvchi: $user"
 
+# Diqqat: Select-String da -Recurse YO'Q — fayllarni Get-ChildItem topadi.
+function Scan([string[]]$include, [string]$pattern) {
+    $f = Get-ChildItem $Root -Recurse -File -Include $include -EA SilentlyContinue |
+         Where-Object { $_.FullName -notlike '*\.git\*' -and
+                        $_.Name -ne 'set-identity.ps1' -and $_.Name -ne 'publish-github.ps1' }
+    if ($f) { Select-String -Path $f.FullName -Pattern $pattern -EA SilentlyContinue }
+}
+
 # Placeholder qolgan bo'lsa, nashr qilib bo'lmaydi — .exe ichida
 # "GITHUB_USERNAME_PLACEHOLDER" ko'rinib qoladi.
-$ph = Select-String -Path (Join-Path $Root '*') -Include *.iss,*.rc,*.md,*.html `
-      -Recurse -Pattern 'GITHUB_USERNAME_PLACEHOLDER' -EA SilentlyContinue |
-      Where-Object { $_.Path -notlike '*set-identity.ps1' -and $_.Path -notlike '*publish-github.ps1' }
+$ph = Scan @('*.iss','*.rc','*.md','*.html') 'GITHUB_USERNAME_PLACEHOLDER'
 if ($ph) {
     Write-Host "  Placeholder qolgan fayllar:" -ForegroundColor Yellow
     $ph | ForEach-Object { Info $_.Path.Replace("$Root\", '') }
@@ -72,8 +78,7 @@ if ($ph) {
 }
 
 # Asl muallifning shaxsiy ma'lumoti qolib ketmasin.
-$leak = Select-String -Path (Join-Path $Root '*') -Include *.cpp,*.h,*.html,*.iss,*.rc `
-        -Recurse -Pattern '\b9860\s?\d{4}|\b5614\s?6818|\b4231\s?2000|Mirkabilov' -EA SilentlyContinue
+$leak = Scan @('*.cpp','*.h','*.html','*.iss','*.rc') '\b9860\s?\d{4}|\b5614\s?6818|\b4231\s?2000|Mirkabilov'
 if ($leak) {
     $leak | ForEach-Object { Info $_.Path.Replace("$Root\", '') + ":" + $_.LineNumber }
     Fail "Begona shaxsiy/moliyaviy ma'lumot topildi. Nashr to'xtatildi."
